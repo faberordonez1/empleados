@@ -25,3 +25,8 @@ create table empleado_rol(
     foreign key (empleado_id) references empleados (id),
     foreign key (rol_id) references roles(id)
 )
+insert into areas(nombre) values ("Administracion"),("comercial");
+
+insert into roles(nombre) values ("Profesional de proyectos - Desarrollador"),
+("Gerente estratégico"),
+("Auxiliar administrativo");
