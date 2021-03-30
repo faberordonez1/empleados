@@ -1,5 +1,10 @@
-<?php  include("conexion.php");?>
+<?php  include("conexion.php");
+   $id = $_GET['id'];
+   $sql = "SELECT * FROM  empleados WHERE id='$id'";
+   $query =mysqli_query($conn,$sql);
 
+   $empleado = mysqli_fetch_array($query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,32 +17,40 @@
 <body>
     <div class="container my-5">
 
-        <h2>Crear Empleado </h2>
+        <h2>Editar Empleado </h2>
         
-        <form action="create.php" method="POST">
-          <div class="row mb-3">
+        <form action="update.php" method="POST">
+        <div class="row mb-3">
+            <label for="nombre" class="col-sm-2 col-form-label fw-bold" >ID</label>
+            <div class="col-sm-10">
+            <input type="text" class="col-sm-2 col-form-label fw-bold" value="<?php echo $id;?>" disabled></input>
+            </div>
+          </div> 
+        <div class="row mb-3">
             <label for="nombre" class="col-sm-2 col-form-label fw-bold" >Nombre completo*</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="name" name="nombre" autofocus>
+              <input type="text" class="form-control" id="name" name="nombre" value="<?php echo $empleado['nombre']?>"; autofocus>
             </div>
           </div>
             <div class="row mb-3">
               <label for="email" class="col-sm-2 col-form-label fw-bold">Correo electrónico*</label>
               <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo $empleado['email']?>">
               </div>
             </div>
+            
             <fieldset class="row mb-3">
               <legend class="col-form-label col-sm-2 pt-0 fw-bold">Sexo*</legend>
               <div class="col-sm-10">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="sexo" id="sexoMasculino" value="M">
+                  <input class="form-check-input" type="radio" name="sexo" id="sexoMasculino" value="M" 
+                  <?php if($empleado['sexo']==="M"){ ?> checked <?php echo " ";}?> >
                   <label class="form-check-label" for="sexoMasculino">
                     Masculino
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="sexo" id="sexoFemenino" value="F">
+                  <input class="form-check-input" type="radio" name="sexo" id="sexoFemenino" value="F" checked> 
                   <label class="form-check-label" for="sexoFemenino">
                     Femenino
                   </label>

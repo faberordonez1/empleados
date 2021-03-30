@@ -17,7 +17,7 @@ $query =mysqli_query($conn,$sql);
 </head>
 <body>
 <div class="container">
-<h2>Empleados</h2>
+<h2 class="m-5">Empleados</h2>
 <table class="table m-5">
   <thead>
     <tr>
@@ -27,7 +27,7 @@ $query =mysqli_query($conn,$sql);
       <th scope="col">Sexo</th>
       <th scope="col">Area</th>
       <th scope="col">Boletin</th>
-      <th scope="col"><a href="insert.php" class="btn btn-primary"><i class="fas fa-user-plus"></i></a></th>
+      <th scope="col"><a href="insert.php" class="btn btn-primary"><i class="fas fa-user-plus"> Crear </i></a></th>
     </tr>
   </thead>
   <tbody>
