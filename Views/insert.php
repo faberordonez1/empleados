@@ -1,4 +1,4 @@
-<?php  include("conexion.php");?>
+<?php  include("../conexion.php");?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
 
         <h2>Crear Empleado </h2>
         
-        <form action="create.php" method="POST">
+        <form action="../controller/create.php" method="POST">
           <div class="row mb-3">
             <label for="nombre" class="col-sm-2 col-form-label fw-bold" >Nombre completo*</label>
             <div class="col-sm-10">

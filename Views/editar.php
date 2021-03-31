@@ -1,4 +1,4 @@
-<?php  include("conexion.php");
+<?php  include("../conexion.php");
    $id = $_GET['id'];
    $sql = "SELECT * FROM  empleados WHERE id='$id'";
    $query =mysqli_query($conn,$sql);
@@ -19,17 +19,17 @@
 
         <h2>Editar Empleado </h2>
         
-        <form action="update.php" method="POST">
+        <form action="../controller/update.php" method="POST">
         <div class="row mb-3">
             <label for="nombre" class="col-sm-2 col-form-label fw-bold" >ID</label>
             <div class="col-sm-10">
-            <input type="text" class="col-sm-2 col-form-label fw-bold" value="<?php echo $id;?>" disabled></input>
+            <input type="text" class="col-sm-2 col-form-label fw-bold" name="id" value="<?php echo $empleado['id'];?>">
             </div>
           </div> 
         <div class="row mb-3">
             <label for="nombre" class="col-sm-2 col-form-label fw-bold" >Nombre completo*</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="name" name="nombre" value="<?php echo $empleado['nombre']?>"; autofocus>
+              <input type="text" class="form-control" id="name" name="nombre" value="<?php echo $empleado['nombre'];?>" autofocus>
             </div>
           </div>
             <div class="row mb-3">
@@ -38,19 +38,18 @@
                 <input type="email" class="form-control" id="email" name="email" value="<?php echo $empleado['email']?>">
               </div>
             </div>
-            
-            <fieldset class="row mb-3">
               <legend class="col-form-label col-sm-2 pt-0 fw-bold">Sexo*</legend>
               <div class="col-sm-10">
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="sexo" id="sexoMasculino" value="M" 
-                  <?php if($empleado['sexo']==="M"){ ?> checked <?php echo " ";}?> >
+                     <?php if($empleado['sexo']=='M'){ echo "checked";}?> >
                   <label class="form-check-label" for="sexoMasculino">
                     Masculino
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="sexo" id="sexoFemenino" value="F" checked> 
+                  <input class="form-check-input" type="radio" name="sexo" id="sexoFemenino" value="F" 
+                   <?php if($empleado['sexo']=='F'){ echo "checked";}?> >
                   <label class="form-check-label" for="sexoFemenino">
                     Femenino
                   </label>
@@ -70,7 +69,7 @@
             <div class="row mb-3">
               <label for="descripcion" class="col-sm-2 col-form-label fw-bold">Descripción*</label>
               <div class="col-sm-10">
-                <textarea class="form-control" name="descripcion" id="descripcion"></textarea>
+                <textarea class="form-control" name="descripcion" id="descripcion"><?php echo $empleado['descripcion']?></textarea>
               </div>
             </div>
             <div class="row mb-3">
@@ -106,7 +105,7 @@
                   </div>
                 </div>
             </div>
-            <input type="submit" class="btn btn-primary" name="crearEmpleado" value="Guardar">
+            <input type="submit" class="btn btn-primary" name="editarEmpleado" value="Guardar">
             
           </form>
     </div>

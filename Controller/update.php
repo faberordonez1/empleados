@@ -1,7 +1,9 @@
 <?php 
-include("conexion.php");
+include("../conexion.php");
 
-    if(isset($_POST['crearEmpleado'])){
+    if(isset($_POST['editarEmpleado'])){
+        $id = $_POST['id'];
+        echo $id;
         $nombre = $_POST['nombre'];
         $email = $_POST['email'];
         $sexo = $_POST['sexo'];
@@ -14,23 +16,21 @@ include("conexion.php");
 
          $descripcion = $_POST['descripcion'];
 
-         $consultaSql = " INSERT INTO empleados VALUES (null,'$nombre','$email','$sexo','$area','$boletin','$descripcion')";
+         $consultaSql = "UPDATE empleados SET nombre='$nombre',email='$email',sexo='$sexo',area_id='$area',boletin='$boletin',descripcion='$descripcion' WHERE id='$id'";
          $query =mysqli_query($conn,$consultaSql);
-         
-
-        /*
+          
          if(!empty($_POST['rol'])){
 
                 foreach($_POST['rol'] as $rol_id){
                     echo "<p>".$rol_id."</p>";
                 }          
-        }*/
+        }
 
         if($query){
-            Header("Location:index.php");
+            Header("Location:../index.php");
 
         }else{
-            echo "Error de creaciòn";
+            echo "Error al Actualizar";
         }
 
     }

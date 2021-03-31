@@ -27,7 +27,7 @@ $query =mysqli_query($conn,$sql);
       <th scope="col">Sexo</th>
       <th scope="col">Area</th>
       <th scope="col">Boletin</th>
-      <th scope="col"><a href="insert.php" class="btn btn-primary"><i class="fas fa-user-plus"> Crear </i></a></th>
+      <th scope="col"><a href="views/insert.php" class="btn btn-primary"><i class="fas fa-user-plus"> Crear </i></a></th>
     </tr>
   </thead>
   <tbody>
@@ -41,8 +41,8 @@ $query =mysqli_query($conn,$sql);
       <td><?php echo $row['sexo']?></td>
       <td><?php echo $row['area_id']?></td>
       <td><?php echo $row['boletin']?></td>
-      <td><a href="editar.php?id=<?php echo $row['id']?>"><i class="fas fa-edit text-warning"></i></a></td>
-      <td><a href="delete.php?id=<?php echo $row['id']?>"><i class="fas fa-trash-alt text-danger"></i></a></td>
+      <td><a href="views/editar.php?id=<?php echo $row['id']?>"><i class="fas fa-edit text-warning"></i></a></td>
+      <td><a href="controller/delete.php?id=<?php echo $row['id']?>"><i class="fas fa-trash-alt text-danger"></i></a></td>
 
 
     </tr>
