@@ -2,7 +2,6 @@
 
 $sql = "SELECT * FROM  empleados";
 $query =mysqli_query($conn,$sql);
-
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +39,7 @@ $query =mysqli_query($conn,$sql);
       <td><?php echo $row['email']?></td>
       <td><?php echo $row['sexo']?></td>
       <td><?php echo $row['area_id']?></td>
-      <td><?php echo $row['boletin']?></td>
+      <td><?php echo  $row['boletin'] ?  "Si" : "No";?></td>
       <td><a href="views/editar.php?id=<?php echo $row['id']?>"><i class="fas fa-edit text-warning"></i></a></td>
       <td><a href="controller/delete.php?id=<?php echo $row['id']?>"><i class="fas fa-trash-alt text-danger"></i></a></td>
 

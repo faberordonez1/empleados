@@ -1,4 +1,10 @@
-<?php  include("../conexion.php");?>
+<?php  include("../conexion.php");
+       $sql = "SELECT MAX(ID) FROM empleados";
+       $query =mysqli_query($conn,$sql);
+
+       $row =mysqli_fetch_array($query);      
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,22 +22,28 @@
         
         <form action="../controller/create.php" method="POST">
           <div class="row mb-3">
+              <label for="id" class="col-sm-2 col-form-label fw-bold" >ID</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" value="<?php echo $row[0]+1;?>" id="id" name="id">
+              </div>
+            </div>
+          <div class="row mb-3">
             <label for="nombre" class="col-sm-2 col-form-label fw-bold" >Nombre completo*</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="name" name="nombre" autofocus>
+              <input type="text" class="form-control" id="name" name="nombre" autofocus required>
             </div>
           </div>
             <div class="row mb-3">
               <label for="email" class="col-sm-2 col-form-label fw-bold">Correo electrónico*</label>
               <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" required>
               </div>
             </div>
             <fieldset class="row mb-3">
               <legend class="col-form-label col-sm-2 pt-0 fw-bold">Sexo*</legend>
               <div class="col-sm-10">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="sexo" id="sexoMasculino" value="M">
+                  <input class="form-check-input" type="radio" name="sexo" id="sexoMasculino" value="M" required>
                   <label class="form-check-label" for="sexoMasculino">
                     Masculino
                   </label>
@@ -47,7 +59,8 @@
             <div class="row mb-3">
               <label for="selectArea" class="col-sm-2 col-form-label fw-bold">Area*</label>
               <div class="col-sm-10">
-              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg" id="Area" name="area">
+              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg" id="Area" name="area" required>
+                <option value="">Seleccione</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -57,13 +70,13 @@
             <div class="row mb-3">
               <label for="descripcion" class="col-sm-2 col-form-label fw-bold">Descripción*</label>
               <div class="col-sm-10">
-                <textarea class="form-control" name="descripcion" id="descripcion"></textarea>
+                <textarea class="form-control" name="descripcion" id="descripcion" required></textarea>
               </div>
             </div>
             <div class="row mb-3">
               <div class="col-sm-10 offset-sm-2">
                   <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="boletin" name="boletin" value="1">
+                      <input class="form-check-input" type="checkbox" id="boletin" name="boletin" value="1" checked>
                       <label class="form-check-label" for="boletin">
                         Deseo recibir boletin informativo
                       </label>
